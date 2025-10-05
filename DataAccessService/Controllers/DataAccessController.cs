@@ -1,17 +1,15 @@
 using DataCommonClasses.Data;
-using DistributedStorageService.Classes;
 using Microsoft.AspNetCore.Mvc;
-using DataRequest = DataCommonClasses.Data.DataRequest;
 
-namespace DistributedStorageService.Controllers
+namespace DataAccessService.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class DataController : ControllerBase
+    public class DataAccessController : ControllerBase
     {
-        private readonly ILogger<DataController> _logger;
+        private readonly ILogger<DataAccessController> _logger;
 
-        public DataController(ILogger<DataController> logger)
+        public DataAccessController(ILogger<DataAccessController> logger)
         {
             _logger = logger;
         }
@@ -19,7 +17,6 @@ namespace DistributedStorageService.Controllers
         [HttpPost(Name = "Get")]
         public DataResponse Get(DataRequest request)
         {
-            _logger.LogInformation("Received Get request with Key: {Key}", request.ToString(), DateTime.UtcNow);
             return new DataResponse();
         }
 

@@ -1,3 +1,5 @@
+using DistributedStorageService.Middleware;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -17,9 +19,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseRouting();
 app.UseAuthorization();
-
+app.UseLoggingMiddleware();
+app.UseAuthenticationMiddleware();
 app.MapControllers();
+
 
 app.Run();
