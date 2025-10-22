@@ -1,8 +1,13 @@
-using DistributedStorageService.Middleware;
+using DataCommonClasses.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                     .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
+                     .AddEnvironmentVariables();
+builder.Services.AddLoggingMiddleware();
+builder.Services.AddAuthenticationMiddleware();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -24,6 +29,5 @@ app.UseAuthorization();
 app.UseLoggingMiddleware();
 app.UseAuthenticationMiddleware();
 app.MapControllers();
-
 
 app.Run();

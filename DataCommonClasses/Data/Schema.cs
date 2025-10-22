@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataCommonClasses.Data
 {
-    public class DataResponse
+    public class Schema
     {
-        public Type Type { get; set; }
-        public IEnumerable<DataRecordItem<Type>>? DataItems { get; set; }
+        public string Name { get; set; }
+        public IEnumerable<SchemaItem> CollectionSchemas { get; set; }
     }
 }

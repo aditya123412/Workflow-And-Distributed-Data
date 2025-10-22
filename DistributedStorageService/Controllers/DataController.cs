@@ -34,5 +34,10 @@ namespace DistributedStorageService.Controllers
         {
             return new DataResponse();
         }
+        [HttpPost(Name = "Delete")]
+        public DataResponse Delete(DataRequest request)
+        {
+            return new DataResponse();
+        }
     }
 }
